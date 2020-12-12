@@ -8,10 +8,10 @@
 
 ## Tests
 #### Build
-`make unit_test
+`make unit_test`
 
 #### Linter
-`make cs-fixer
+`make cs-fixer`
 
 ## Initalization Symfony
 #### Install php dependances
