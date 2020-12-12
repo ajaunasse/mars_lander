@@ -9,7 +9,7 @@ use App\Executer\OutputExecuter;
 
 CONST DATA_FILE = 'input.txt';
 
-$resource = fopen(DATA_FILE, "r");
+$resource = fopen(DATA_FILE, 'r');
 
 if($resource) {
 

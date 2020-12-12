@@ -20,11 +20,11 @@ class InputExecuter
         $currentRover = null;
         $rovers = new RoverCollection();
 
-        //Collect the current set up of the plateau and all the rover's crew.
+        //Collect the current set up of the plateau and all the instructions of the rover's crew.
         while (($buffer = fgets($resource, 4096)) !== false) {
 
             //Delete line break to prevent bug when parsing the string
-            $instructionAsString = str_replace(array("\n", "\r"), '', $buffer);
+            $instructionAsString = \str_replace(array("\n", "\r"), '', $buffer);
 
             //First line is Plateau's Coordinate
             if (0 == $i) {
@@ -33,6 +33,10 @@ class InputExecuter
                 );
                 $i++;
                 continue;
+            }
+
+            if(null == $plateau) {
+                //TODO: throw exception
             }
 
             //If line index is odd, is the current rover coordinate and is a new rover
@@ -48,7 +52,7 @@ class InputExecuter
             $i++;
         }
 
-        //Execute instruction of each rover
+        //Execute instructions of each rover
         $rovers->execute();
 
         return $rovers;

@@ -14,7 +14,7 @@ class RoverFactory
     {
         $rover = new Rover();
 
-        $coordinateAsArray = explode(' ', trim($coordinate));
+        $coordinateAsArray = explode(' ', \trim($coordinate));
         $startCoordinate = CoordinateFactory::createFromString($coordinate);
         $currentCoordinate = (clone $startCoordinate);
 

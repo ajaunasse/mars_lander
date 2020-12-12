@@ -10,7 +10,7 @@ class CoordinateFactory
 {
     public static function createFromString(string $data): Coordinate
     {
-        $coordinateAsArray = explode(' ', $data);
+        $coordinateAsArray = explode(' ', \trim($data));
 
         if (sizeof($coordinateAsArray) < 2) {
             throw new BadFormatedCoordinateException(

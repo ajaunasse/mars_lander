@@ -30,22 +30,31 @@ class InstructionCollection implements \Countable, \ArrayAccess
 
     public function offsetGet($offset)
     {
-        if ($this->offsetExists($offset)) {
-            return $this->instructions[$offset];
+        if(!$this->offsetExists($offset)) {
+            //Todo: throw exception
         }
+
+        return $this->instructions[$offset];
+
     }
 
     public function offsetSet($offset, $value)
     {
-        if ($this->offsetExists($offset)) {
-            $this->instructions[$offset] = $value;
+        if(!$this->offsetExists($offset)) {
+            //Todo: throw exception
         }
+
+        $this->instructions[$offset] = $value;
+
     }
 
     public function offsetUnset($offset)
     {
-        if ($this->offsetExists($offset)) {
-            unset($this->instructions[$offset]);
+        if(!$this->offsetExists($offset)) {
+            //Todo: throw exception
         }
+
+        unset($this->instructions[$offset]);
+
     }
 }
