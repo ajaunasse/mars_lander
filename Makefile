@@ -17,7 +17,7 @@ unit_test:
 	$(PHP) vendor/bin/phpunit tests
 
 coverage:
-	$(PHP) vendor/bin/phpunit test --coverage-text
+	$(PHP) vendor/bin/phpunit tests --coverage-text
 # —— Lint php —————————————————————————————————————————————————————
 cs-fixer:
 	$(PHP) vendor/bin/php-cs-fixer fix src

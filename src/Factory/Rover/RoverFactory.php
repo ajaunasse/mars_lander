@@ -14,9 +14,14 @@ class RoverFactory
     {
         $rover = new Rover();
 
-        $coordinateAsArray = explode(' ', $coordinate);
+        $coordinateAsArray = explode(' ', trim($coordinate));
         $startCoordinate = CoordinateFactory::createFromString($coordinate);
         $currentCoordinate = (clone $startCoordinate);
+
+        if (!isset($coordinateAsArray[2])) {
+            //TODO: throw exception;
+        }
+
         $rover
             ->setStartCoordinate($startCoordinate)
             ->setCurrentCoordinate($currentCoordinate)

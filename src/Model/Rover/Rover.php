@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Model\Rover;
 
 use App\Factory\Plateau\DirectionFactory;
+use App\Model\Instruction\Instruction;
 use App\Model\Instruction\InstructionCollection;
 use App\Model\Instruction\Rotatable;
 use App\Model\Plateau\Coordinate;
@@ -76,27 +77,35 @@ class Rover
 
     public function up()
     {
-        //TODO
+        $this->currentCoordinate->setY($this->currentCoordinate->getY() + 1);
     }
 
     public function down()
     {
-        //TODO
+        $this->currentCoordinate->setY($this->currentCoordinate->getY() - 1);
     }
 
     public function left()
     {
-        //TODO
+        $this->currentCoordinate->setX($this->currentCoordinate->getX() - 1);
     }
 
     public function right()
     {
-        //TODO
+        $this->currentCoordinate->setX($this->currentCoordinate->getX() + 1);
     }
 
     public function displayFullCoordinate()
     {
-        //TODO
+        $currentCoordinate = $this->currentCoordinate;
+        $currentDirection = $this->currentDirection;
+
+        return sprintf(
+            '%d %d %s',
+            $currentCoordinate->getX(),
+            $currentCoordinate->getY(),
+            $currentDirection->getOrientation()
+        );
     }
 
     public function spin(Rotatable $rotatable)
@@ -109,8 +118,13 @@ class Rover
     }
 
 
-
     public function executeInstructions()
     {
+        foreach ($this->instructions->getInstructions() as $instruction) {
+            /** @var Instruction $instruction */
+            $instruction
+                ->executeInstruction($this)
+            ;
+        }
     }
 }
