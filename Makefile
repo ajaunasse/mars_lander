@@ -13,8 +13,8 @@ composer-update: composer.json
 	$(COMPOSER) update
 
 #Test unitaires ————————————————————————————————————————————————————————————————————————
-tests:
-	$(PHP) vendor/bin/phpunit test
+unit_test:
+	$(PHP) vendor/bin/phpunit tests
 
 coverage:
 	$(PHP) vendor/bin/phpunit test --coverage-text

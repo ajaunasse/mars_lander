@@ -5,5 +5,5 @@ namespace App\Model\Instruction;
 
 interface Rotatable
 {
-    public static function rotateFrom(string $orientation);
+    public function rotateFrom(string $orientation): string;
 }

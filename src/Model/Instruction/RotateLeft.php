@@ -6,7 +6,7 @@ namespace App\Model\Instruction;
 use App\Model\Plateau\Direction;
 use App\Model\Rover\Rover;
 
-class RotateLeft extends Rotate
+class RotateLeft implements Rotatable, Instruction
 {
     const MAPPING_ROTATE_FROM = [
         Direction::NORTH => Direction::WEST,
@@ -17,10 +17,10 @@ class RotateLeft extends Rotate
 
     public function executeInstruction(Rover $rover)
     {
-        parent::executeInstruction($rover);
+        $rover->spin($this);
     }
 
-    public static function rotateFrom(string $currentDirection): string
+    public function rotateFrom(string $currentDirection): string
     {
         if (!isset(self::MAPPING_ROTATE_FROM[$currentDirection])) {
             //TODO: throw exception

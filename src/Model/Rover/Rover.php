@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Model\Rover;
 
+use App\Factory\Plateau\DirectionFactory;
 use App\Model\Instruction\InstructionCollection;
+use App\Model\Instruction\Rotatable;
 use App\Model\Plateau\Coordinate;
 use App\Model\Plateau\Direction;
 use App\Model\Plateau\Plateau;
@@ -96,6 +98,16 @@ class Rover
     {
         //TODO
     }
+
+    public function spin(Rotatable $rotatable)
+    {
+        $newDirection = $rotatable->rotateFrom(
+            $this->currentDirection->getOrientation()
+        );
+
+        $this->currentDirection = DirectionFactory::createFromString($newDirection);
+    }
+
 
 
     public function executeInstructions()
