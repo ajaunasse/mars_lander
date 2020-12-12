@@ -1,0 +1,24 @@
+{
+    "name": "root/mars_lander",
+    "description": "Mars lander tests",
+    "authors": [
+        {
+            "name": "Alexandre Jaunasse",
+            "email": "alexandre.jaunasse@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/",
+            "App\\Test\\": "tests/"
+        }
+    },
+    "require": {
+        "php": ">= 5.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7",
+        "symfony/var-dumper": "^5.2",
+        "friendsofphp/php-cs-fixer": "^2.17"
+    }
+}
