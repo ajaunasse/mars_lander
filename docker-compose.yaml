@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+
+  php:
+    build: docker/php-fpm
+    user: '1000:1000'
+    ports:
+      - '9002:9000'
+    volumes:
+      - ./:/var/www/mars_lander
+
+  nginx:
+    build: docker/nginx
+    ports:
+      - '80:80'
+    volumes:
+      - ./docker/nginx/logs/:/var/log/nginx:cached
+      - ./:/var/www/mars_lander
+    links:
+      - php
